@@ -1,5 +1,5 @@
 const script = document.createElement('script');
-script.src = "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"; 
+script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAbauG84e4IlL78ZiAMnxODpcFiowviJKs&callback=initMap"; 
 document.head.appendChild(script);
 
 function initMap() {
@@ -13,3 +13,5 @@ function initMap() {
         map: map
     });
 }
+
+chrome.runtime.sendMessage({ action: "injectMaps" }); // Send message to background.js to confirm that the script has been injected
