@@ -6,7 +6,7 @@
     "action": {
       "default_title": "Google map chrome extension",
       "default_popup": "popup.html",
-      "default_icon": "penguin_walking.png"
+      "default_icon": "./resources/penguin_walking.png"
     },
     "permissions": ["activeTab", "storage"],
     "content_scripts": [
