@@ -18,3 +18,8 @@ video {
 #gameInfo {
     /* Add styles for your game info */
 }
+
+#camera, #output {
+    position: center;
+    transform: scaleX(-1);
+}

@@ -1,13 +1,3 @@
-// import * as poseDetection from '@tensorflow-models/pose-detection';
-// import * as tf from '@tensorflow/tfjs-core';
-
-// import * as tf from 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@latest';
-// import * as poseDetection from 'https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection';
-
-// Register one of the TF.js backends.
-// import '@tensorflow/tfjs-backend-webgl';
-//import '@tensorflow/tfjs-backend-wasm';
-
 // Access the user's camera
 navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
@@ -17,21 +7,17 @@ navigator.mediaDevices.getUserMedia({ video: true })
     .catch(err => {
         console.error("Error accessing the camera: ", err);
     });
-
 // function isFullBodyInView() {
 //     // Placeholder for full body detection logic
 //     // Returns true if a full body is detected, false otherwise
 //     return true; // Replace with actual detection logic
 // }
-
 // function startCountdown(seconds) {
 //     const countdownElement = document.getElementById('countdown');
 //     let counter = seconds;
-
 //     const intervalId = setInterval(() => {
 //         countdownElement.innerText = `Game starts in: ${counter}`;
 //         counter--;
-
 //         if (counter < 0) {
 //             clearInterval(intervalId);
 //             countdownElement.innerText = '';
@@ -39,22 +25,23 @@ navigator.mediaDevices.getUserMedia({ video: true })
 //         }
 //     }, 1000);
 // }
-
 // function startGame() {
 //     // Game starts
 //     // Implement game logic here
 //     console.log("Game started!");
 // }
-
 // // Periodically check if the player is in the correct position
 // setInterval(() => {
 //     if (isFullBodyInView()) {
 //         startCountdown(5); // Start a 5-second countdown
 //     }
 // }, 1000); // Check every second as an example
-
 async function setupWebcam() {
     const webcamElement = document.getElementById('camera');
+    webcamElement.onloadedmetadata = () => {
+        canvasElement.width = webcamElement.videoWidth;
+        canvasElement.height = webcamElement.videoHeight;
+    };
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ 'video': true });
         webcamElement.srcObject = stream;
@@ -67,39 +54,47 @@ async function setupWebcam() {
         console.error('Error accessing the webcam:', error);
     }
 }
-
-
 async function createDetector() {
     const videoElement = await setupWebcam();
     videoElement.play();
-
     const model = poseDetection.SupportedModels.MoveNet;
     const detectorConfig = {
         modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING,
         // Other configuration options
     };
+    const detector = await poseDetection.createDetector(model, detectorConfig);     
+    
+    const canvasElement = document.getElementById('output'); // Getting the canvas element
+    const ctx = canvasElement.getContext('2d'); // Getting the 2D rendering context
 
-    const detector = await poseDetection.createDetector(model, detectorConfig);
+    const drawKeypoint = (keypoint) => {         
+        const { x, y, score } = keypoint;         
+            if (score > 0.3) {         
+                const mirroredX = canvasElement.width - x;
+                
+                ctx.beginPath();             
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);             
+                ctx.fillStyle = "aqua";             
+                ctx.fill();
+                console.log("hiiiiiiiiiiiiiiiiiiii");         
+            }     
+    };
 
     const runPoseDetection = async () => {
-        const poses = await detector.estimatePoses(videoElement);
-        console.log(poses[0]);
+        ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
+        const poses = await detector.estimatePoses(videoElement);
+        console.log(poses[0]);    
+            
+         // Draw keypoints         
+        if (poses && poses.length > 0) {
+            poses[0].keypoints.forEach(drawKeypoint);
+        }
         // You might want to draw the results on the video or process them further
         // ...
-
         requestAnimationFrame(runPoseDetection); // Continuously run pose detection
     };
 
     runPoseDetection();
 }
-
 createDetector();
-
-
-// Outputs:
-// [
-//    {x: 230, y: 220, score: 0.9, name: "nose"},
-//    {x: 212, y: 190, score: 0.8, name: "left_eye"},
-//    ...
-// ]
