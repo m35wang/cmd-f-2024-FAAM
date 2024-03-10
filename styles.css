@@ -19,7 +19,7 @@ body, html {
 
 video {
     position: fixed;
-    top: 10px;
+    top: 5%;
     left: 10px;
     width: 27.5%;
     height: auto;
@@ -38,7 +38,7 @@ video {
     color: #ffffff;
     position: absolute;
     width: 28.5%;
-    top: 48%;
+    top: 54%;
     left: 0;
     margin-left: 5px;
 }
@@ -110,11 +110,27 @@ h1:focus {
 h2 {
     font-weight: 200;
     font-size: 25px;
+    padding-bottom: 15px;
+    padding-top: 22px;
+    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8), 
+        0 0 15px rgba(255, 255, 255, 0.8), 
+        0 0 25px rgba(255, 255, 255, 0.8), 
+        0 0 10px black;
 }
 
 h3 {
     font-weight: 200;
     font-size: 20px;
+    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.7), 
+        0 0 15px rgba(255, 255, 255, 0.7), 
+        0 0 25px rgba(255, 255, 255, 0.7), 
+        0 0 10px black;
 }
 
 #camera, #output {
