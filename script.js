@@ -77,7 +77,8 @@ async function createDetector() {
          // Draw keypoints         
         if (poses && poses.length > 0) {
             poses[0].keypoints.forEach(drawKeypoint);
-            plank(poses[0].keypoints);
+            // plank(poses[0].keypoints);
+            burpee(poses[0].keypoints);
         }
         // You might want to draw the results on the video or process them further
         // ...
@@ -139,9 +140,9 @@ async function createDetector() {
         var jump = 0;
         var down = 0;
 
-        var burpDone = console.log("burpee function done");
-
         for (let i = 0; jump <= 10 && down <= 10; i++){
+            var burpDone = console.log("burpee function done");
+            console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiii");
             // array 15 and 16 are L and R ankles
             if (array[15] < 400 && array[16] < 400){
                 jump += 1;
@@ -156,6 +157,30 @@ async function createDetector() {
         }
 
         return burpDone;
+    }
+
+    function jumpJack(array){
+        var armDown = 0;
+        var ankleOut = 0;
+        var ankleIn = 0;
+        var clap = 0;
+
+        for (let i = 0; armDown <= 10 && ankleOut <= 10 && ankleIn <= 10 && clap <= 10; i++){
+            var jackDone = console.log("burpee function done");
+            // wrists
+            if(array[9] <= 150 && array[10] <= 150){
+                clap += 1;
+                console.log("jump jack clap score increased by 1");
+            }
+            if(array[9] >= 300 && array[10] >= 300){
+                armDown += 1;
+                console.log("jump jack arm down score increased by 1");
+            }
+            if(array[15] <= 300 && array[16] <= 300){
+                ankleOut += 1;
+                console.log("jump jack ankle out score increased by 1");
+            }
+        }
     }
 
 }
