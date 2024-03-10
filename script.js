@@ -54,6 +54,7 @@ async function setupWebcam() {
         console.error('Error accessing the webcam:', error);
     }
 }
+
 async function createDetector() {
     const videoElement = await setupWebcam();
     videoElement.play();
@@ -76,7 +77,21 @@ async function createDetector() {
                 ctx.arc(x, y, 5, 0, 2 * Math.PI);             
                 ctx.fillStyle = "aqua";             
                 ctx.fill();
-                console.log("hiiiiiiiiiiiiiiiiiiii");         
+                console.log("hiiiiiiiiiiiiiiiiiiii");   
+
+                const stopWatch = new Date();
+                var totalTime = 0; 
+
+                let startTime = stopWatch.getTime();
+
+                while (totalTime <= 10){   
+                    if(totalTime >= 0){ 
+                        let currentTime = stopWatch.getTime();
+                        console.log(currentTime); 
+                        totalTime = currentTime - startTime; 
+                        console.log(totalTime); 
+                    }
+                }
             }     
     };
 
