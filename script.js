@@ -122,7 +122,7 @@ async function createDetector() {
     
     function plank(array){
 
-        for (let i = 0; i < array.length; i++) {
+        for (let i = 0; score >= 10; i++) {
             var output = console.log("hiiiiiiiiiiiiiiiiiiiiiiii");
             // array 15 and 16 are L and R ankles
             //array 10 and 11 are L and R wrists
