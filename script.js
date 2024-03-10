@@ -135,9 +135,28 @@ async function createDetector() {
         return output;
     }
 
-    // function burpee(array){
-    //     z
-    // }
+    function burpee(array){
+        var jump = 0;
+        var down = 0;
+
+        var burpDone = console.log("burpee function done");
+
+        for (let i = 0; jump <= 10 && down <= 10; i++){
+            // array 15 and 16 are L and R ankles
+            if (array[15] < 400 && array[16] < 400){
+                jump += 1;
+                console.log("burpee jump score increased by 1");
+            }
+
+            // array 9 and 10 are L and R wrists
+            if (array[9] >= 400 && array[10] >= 400){
+                down += 1;
+                console.log("burpee pushup score increased by 1");
+            }
+        }
+
+        return burpDone;
+    }
 
 }
 createDetector();
