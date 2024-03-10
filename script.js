@@ -77,24 +77,24 @@ async function createDetector() {
                 ctx.arc(x, y, 5, 0, 2 * Math.PI);             
                 ctx.fillStyle = "aqua";             
                 ctx.fill();
-                console.log("hiiiiiiiiiiiiiiiiiiii");   
+                //console.log("hiiiiiiiiiiiiiiiiiiii");   
 
-                const stopWatch = new Date();
-                let totalTime = 0;
-                let startTime = Date.now();
+                // const stopWatch = new Date();
+                // let totalTime = 0;
+                // let startTime = Date.now();
 
-                function updateTimer() {
-                    let currentTime = Date.now();
-                    totalTime += (currentTime - startTime) / 1000; // Convert to seconds
-                    startTime = currentTime;
-                    console.log(totalTime);
+                // function updateTimer() {
+                //     let currentTime = Date.now();
+                //     totalTime += (currentTime - startTime) / 1000; // Convert to seconds
+                //     startTime = currentTime;
+                //     console.log(totalTime);
 
-                    if (totalTime <= 10) {
-                        setTimeout(updateTimer, 100); // Update every 100ms
-                    }
-                }
+                //     if (totalTime <= 10) {
+                //         setTimeout(updateTimer, 100); // Update every 100ms
+                //     }
+                // }
 
-                updateTimer();
+                // updateTimer();
 
             }     
     };
@@ -103,7 +103,7 @@ async function createDetector() {
         ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
         const poses = await detector.estimatePoses(videoElement);
-        console.log(poses[0]);    
+        console.log(poses[0]); 
             
          // Draw keypoints         
         if (poses && poses.length > 0) {
