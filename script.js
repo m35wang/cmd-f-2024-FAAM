@@ -140,19 +140,25 @@ async function createDetector() {
         var jump = 0;
         var down = 0;
 
+        var burpDone = console.log("burpee function done");
+        var badDone = console.log("you burpee failure");
+
         for (let i = 0; jump <= 10 && down <= 10; i++){
-            var burpDone = console.log("burpee function done");
             console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-            // array 15 and 16 are L and R ankles
-            if (array[15] < 400 && array[16] < 400){
+            // array 15 and 16 are L and R ankless
+            if (array[15].y < 400 && array[16].y < 400){
                 jump += 1;
                 console.log("burpee jump score increased by 1");
             }
 
             // array 9 and 10 are L and R wrists
-            if (array[9] >= 400 && array[10] >= 400){
+            if (array[9].y >= 400 && array[10].y >= 400){
                 down += 1;
                 console.log("burpee pushup score increased by 1");
+            }
+
+            if (jump > 10 || down > 10){
+                return badDone;
             }
         }
 
