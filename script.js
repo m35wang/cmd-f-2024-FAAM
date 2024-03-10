@@ -77,7 +77,7 @@ async function createDetector() {
          // Draw keypoints         
         if (poses && poses.length > 0) {
             poses[0].keypoints.forEach(drawKeypoint);
-            // plank(poses[0].keypoints);
+            //plank(poses[0].keypoints);
             burpee(poses[0].keypoints);
         }
         // You might want to draw the results on the video or process them further
@@ -131,64 +131,110 @@ async function createDetector() {
                 score += 1;
                 console.log("score increased by 1");
             }
+
+            if (i == 15 && score < 10){
+                console.log("you plank failure");
+                return false;
+            }
         }
 
         return output;
     }
 
-    function burpee(array){
+    // function burpee(array){
+    //     var jump = 0;
+    //     var down = 0;
+
+    //     // var burpDone = console.log("burpee function done");
+    //     // var badDone = console.log("you burpee failure");
+
+    //     for (let i = 0; jump <= 10 && down <= 10; i++){
+    //         console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+            
+    //         if (jump > 10 || down > 10){
+    //             console.log("you burpee failure");
+    //             return false;
+    //         }
+            
+    //         // array 15 and 16 are L and R ankless
+    //         if (array[15].y < 400 && array[16].y < 400){
+    //             jump += 1;
+    //             console.log("burpee jump score increased by 1");
+    //         }
+
+    //         // array 9 and 10 are L and R wrists
+    //         if (array[9].y >= 400 && array[10].y >= 400){
+    //             down += 1;
+    //             console.log("burpee pushup score increased by 1");
+    //         }
+    //     }
+    //     console.log("burpee function done");
+    //     return true;
+    // }
+
+
+
+    function burpee(array) {
         var jump = 0;
         var down = 0;
-
-        // var burpDone = console.log("burpee function done");
-        // var badDone = console.log("you burpee failure");
-
-        for (let i = 0; jump <= 10 && down <= 10; i++){
-            console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-            // array 15 and 16 are L and R ankless
-            if (array[15].y < 400 && array[16].y < 400){
-                jump += 1;
-                console.log("burpee jump score increased by 1");
+    
+        // Add a limit to the number of iterations
+        const maxIterations = 50;
+    
+        for (let i = 0; i < maxIterations && jump <= 10 && down <= 10; i++) {
+            console.log("Checking burpee conditions");
+    
+            // Make sure keypoints exist and have a 'y' property
+            if (array[15] && array[16] && array[9] && array[10]) {
+                if (array[15].y < 400 && array[16].y < 400) {
+                    jump += 1;
+                    console.log("burpee jump score increased by 1");
+                }
+    
+                if (array[9].y >= 400 && array[10].y >= 400) {
+                    down += 1;
+                    console.log("burpee pushup score increased by 1");
+                }
+            } else {
+                console.log("Keypoint data missing or incomplete");
+                break;
             }
-
-            // array 9 and 10 are L and R wrists
-            if (array[9].y >= 400 && array[10].y >= 400){
-                down += 1;
-                console.log("burpee pushup score increased by 1");
-            }
-
-            if (jump > 10 || down > 10){
+    
+            if (jump > 10 || down > 10) {
                 console.log("you burpee failure");
                 return false;
             }
         }
+    
         console.log("burpee function done");
         return true;
     }
 
-    function jumpJack(array){
-        var armDown = 0;
-        var ankleOut = 0;
-        var ankleIn = 0;
-        var clap = 0;
+    
 
-        for (let i = 0; armDown <= 10 && ankleOut <= 10 && ankleIn <= 10 && clap <= 10; i++){
-            var jackDone = console.log("burpee function done");
-            // wrists
-            if(array[9] <= 150 && array[10] <= 150){
-                clap += 1;
-                console.log("jump jack clap score increased by 1");
-            }
-            if(array[9] >= 300 && array[10] >= 300){
-                armDown += 1;
-                console.log("jump jack arm down score increased by 1");
-            }
-            if(array[15] <= 300 && array[16] <= 300){
-                ankleOut += 1;
-                console.log("jump jack ankle out score increased by 1");
-            }
-        }
-    }
+    // function jumpJack(array){
+    //     var armDown = 0;
+    //     var ankleOut = 0;
+    //     var ankleIn = 0;
+    //     var clap = 0;
+
+    //     for (let i = 0; armDown <= 10 && ankleOut <= 10 && ankleIn <= 10 && clap <= 10; i++){
+    //         var jackDone = console.log("burpee function done");
+    //         // wrists
+    //         if(array[9] <= 150 && array[10] <= 150){
+    //             clap += 1;
+    //             console.log("jump jack clap score increased by 1");
+    //         }
+    //         if(array[9] >= 300 && array[10] >= 300){
+    //             armDown += 1;
+    //             console.log("jump jack arm down score increased by 1");
+    //         }
+    //         if(array[15] <= 300 && array[16] <= 300){
+    //             ankleOut += 1;
+    //             console.log("jump jack ankle out score increased by 1");
+    //         }
+    //     }
+    // }
 
 }
 createDetector();
