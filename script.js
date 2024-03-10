@@ -1,12 +1,22 @@
 // import * as poseDetection from '@tensorflow-models/pose-detection';
 // import * as tf from '@tensorflow/tfjs-core';
 
-import * as tf from 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@latest';
-import * as poseDetection from 'https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection';
+// import * as tf from 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@latest';
+// import * as poseDetection from 'https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection';
 
 // Register one of the TF.js backends.
-import '@tensorflow/tfjs-backend-webgl';
-// import '@tensorflow/tfjs-backend-wasm';
+// import '@tensorflow/tfjs-backend-webgl';
+//import '@tensorflow/tfjs-backend-wasm';
+
+// Access the user's camera
+navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+        const video = document.getElementById('camera');
+        video.srcObject = stream;
+    })
+    .catch(err => {
+        console.error("Error accessing the camera: ", err);
+    });
 
 // function isFullBodyInView() {
 //     // Placeholder for full body detection logic
@@ -30,18 +40,18 @@ import '@tensorflow/tfjs-backend-webgl';
 //     }, 1000);
 // }
 
-function startGame() {
-    // Game starts
-    // Implement game logic here
-    console.log("Game started!");
-}
+// function startGame() {
+//     // Game starts
+//     // Implement game logic here
+//     console.log("Game started!");
+// }
 
-// Periodically check if the player is in the correct position
-setInterval(() => {
-    if (isFullBodyInView()) {
-        startCountdown(5); // Start a 5-second countdown
-    }
-}, 1000); // Check every second as an example
+// // Periodically check if the player is in the correct position
+// setInterval(() => {
+//     if (isFullBodyInView()) {
+//         startCountdown(5); // Start a 5-second countdown
+//     }
+// }, 1000); // Check every second as an example
 
 async function setupWebcam() {
     const webcamElement = document.getElementById('camera');
@@ -73,7 +83,7 @@ async function createDetector() {
 
     const runPoseDetection = async () => {
         const poses = await detector.estimatePoses(videoElement);
-        console.log(poses);
+        console.log(poses[0]);
 
         // You might want to draw the results on the video or process them further
         // ...
@@ -85,3 +95,11 @@ async function createDetector() {
 }
 
 createDetector();
+
+
+// Outputs:
+// [
+//    {x: 230, y: 220, score: 0.9, name: "nose"},
+//    {x: 212, y: 190, score: 0.8, name: "left_eye"},
+//    ...
+// ]

@@ -4,22 +4,40 @@
     <meta charset="UTF-8">
     <title>Fitness Challenge Game</title>
     <link rel="stylesheet" href="styles.css">
+
+
+
 </head>
 <body>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+
     <video id="camera" autoplay></video>
     <div id="gameInfo">
         <!-- Game information like current exercise, repetitions, etc. -->
     </div>
 
-    <div id="countdown"></div>
     
-    <script type="module" src="script.js"></script>
+
+    <script src="script.js"></script>
+    <!-- <div id="gameInfo"> -->
+        <!-- Game information like current exercise, repetitions, etc. -->
+    <!-- </div> -->
+
+    <!-- <div id="countdown"></div> -->
     
     <!-- Include TensorFlow.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script> -->
 
     <!-- Include Pose Detection library -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script> -->
 
+
+    <!-- <script type="module" src="script.js"></script> -->
+    
 </body>
 </html>
