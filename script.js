@@ -80,18 +80,22 @@ async function createDetector() {
                 console.log("hiiiiiiiiiiiiiiiiiiii");   
 
                 const stopWatch = new Date();
-                var totalTime = 0; 
+                let totalTime = 0;
+                let startTime = Date.now();
 
-                let startTime = stopWatch.getTime();
+                function updateTimer() {
+                    let currentTime = Date.now();
+                    totalTime += (currentTime - startTime) / 1000; // Convert to seconds
+                    startTime = currentTime;
+                    console.log(totalTime);
 
-                while (totalTime <= 10){   
-                    if(totalTime >= 0){ 
-                        let currentTime = stopWatch.getTime();
-                        console.log(currentTime); 
-                        totalTime = currentTime - startTime; 
-                        console.log(totalTime); 
+                    if (totalTime <= 10) {
+                        setTimeout(updateTimer, 100); // Update every 100ms
                     }
                 }
+
+                updateTimer();
+
             }     
     };
 

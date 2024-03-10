@@ -15,9 +15,9 @@ video {
     transform: scaleX(-1); /* This will flip the video feed horizontally */
 }
 
-#gameInfo {
+/* #gameInfo { */
     /* Add styles for your game info */
-}
+/* } */
 
 #camera, #output {
     position: center;
