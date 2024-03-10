@@ -1,4 +1,10 @@
+@font-face {
+    font-family: 'Afacad';
+    src: url('"https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&family=Courier+Prime&display=swap');
+}
+
 body, html {
+    font-family: 'Afacad', sans-serif;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -10,8 +16,13 @@ body, html {
 }
 
 video {
-    width: 60%;
-    border: 3px solid black;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 20%;
+    height: auto;
+    border: 3px solid rgb(255, 255, 255);
+    box-shadow: 0 0 10px 2px rgba(109, 140, 226, 0.8); /* Adjust the color and other values as needed */
     transform: scaleX(-1); /* This will flip the video feed horizontally */
 }
 
