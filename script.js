@@ -73,7 +73,7 @@ async function createDetector() {
 
         const poses = await detector.estimatePoses(videoElement);
         console.log(poses[0]); 
-            s
+        
          // Draw keypoints         
         if (poses && poses.length > 0) {
             poses[0].keypoints.forEach(drawKeypoint);
@@ -122,7 +122,6 @@ async function createDetector() {
     
     function plank(array){
 
-        // var output = console.log("hiiiiiiiiiiiiiiiiiiiiiiii");
         for (let i = 0; i < array.length; i++) {
             var output = console.log("hiiiiiiiiiiiiiiiiiiiiiiii");
             // array 15 and 16 are L and R ankles
@@ -136,9 +135,9 @@ async function createDetector() {
         return output;
     }
 
-    // runPoseDetection();
+    // function burpee(array){
+    //     z
+    // }
 
 }
 createDetector();
-    // var positionArray = runPoseDetection();
-    // plank(positionArray);
