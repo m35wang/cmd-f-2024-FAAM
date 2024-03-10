@@ -132,8 +132,3 @@ h3 {
         0 0 25px rgba(255, 255, 255, 0.7), 
         0 0 10px black;
 }
-
-#camera, #output {
-    position: center;
-    transform: scaleX(-1);
-}
