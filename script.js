@@ -1,5 +1,5 @@
-// Assume we have a function that can detect if a full body is in view
-// In a real application, this would use a library like PoseNet
+import * as poseDetection from '@tensorflow-models/pose-detection';
+
 function isFullBodyInView() {
     // Placeholder for full body detection logic
     // Returns true if a full body is detected, false otherwise
