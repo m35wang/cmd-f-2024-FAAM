@@ -68,6 +68,25 @@ async function createDetector() {
     const canvasElement = document.getElementById('output'); // Getting the canvas element
     const ctx = canvasElement.getContext('2d'); // Getting the 2D rendering context
 
+    const runPoseDetection = async () => {
+        ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+
+        const poses = await detector.estimatePoses(videoElement);
+        console.log(poses[0]); 
+            s
+         // Draw keypoints         
+        if (poses && poses.length > 0) {
+            poses[0].keypoints.forEach(drawKeypoint);
+            plank(poses[0].keypoints);
+        }
+        // You might want to draw the results on the video or process them further
+        // ...
+        requestAnimationFrame(runPoseDetection); // Continuously run pose detection
+        // return poses;
+    };
+
+    runPoseDetection();
+
     const drawKeypoint = (keypoint) => {         
         const { x, y, score } = keypoint;         
             if (score > 0.3) {         
@@ -99,21 +118,27 @@ async function createDetector() {
             }     
     };
 
-    const runPoseDetection = async () => {
-        ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+    var score = 0;
+    
+    function plank(array){
 
-        const poses = await detector.estimatePoses(videoElement);
-        console.log(poses[0]); 
-            
-         // Draw keypoints         
-        if (poses && poses.length > 0) {
-            poses[0].keypoints.forEach(drawKeypoint);
+        // var output = console.log("hiiiiiiiiiiiiiiiiiiiiiiii");
+        for (let i = 0; i < array.length; i++) {
+            var output = console.log("hiiiiiiiiiiiiiiiiiiiiiiii");
+            // array 15 and 16 are L and R ankles
+            //array 10 and 11 are L and R wrists
+            if ((array[10].y >= 400 && array[11].y >= 400) && (array[15].score < 0.30 && array[16].score < 0.30)){
+                score += 1;
+                console.log("score increased by 1");
+            }
         }
-        // You might want to draw the results on the video or process them further
-        // ...
-        requestAnimationFrame(runPoseDetection); // Continuously run pose detection
-    };
 
-    runPoseDetection();
+        return output;
+    }
+
+    // runPoseDetection();
+
 }
 createDetector();
+    // var positionArray = runPoseDetection();
+    // plank(positionArray);
