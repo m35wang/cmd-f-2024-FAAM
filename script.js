@@ -140,8 +140,8 @@ async function createDetector() {
         var jump = 0;
         var down = 0;
 
-        var burpDone = console.log("burpee function done");
-        var badDone = console.log("you burpee failure");
+        // var burpDone = console.log("burpee function done");
+        // var badDone = console.log("you burpee failure");
 
         for (let i = 0; jump <= 10 && down <= 10; i++){
             console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiii");
@@ -158,11 +158,12 @@ async function createDetector() {
             }
 
             if (jump > 10 || down > 10){
-                return badDone;
+                console.log("you burpee failure");
+                return false;
             }
         }
-
-        return burpDone;
+        console.log("burpee function done");
+        return true;
     }
 
     function jumpJack(array){
