@@ -12,6 +12,7 @@ body, html {
 video {
     width: 60%;
     border: 3px solid black;
+    transform: scaleX(-1); /* This will flip the video feed horizontally */
 }
 
 #gameInfo {
