@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'Afacad';
-    src: url('"https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&family=Courier+Prime&display=swap');
+    font-family: 'Madimi One';
+    src: url("https://fonts.googleapis.com/css2?family=Madimi+One&display=swap");
 }
 
 body {
@@ -9,7 +9,7 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Madimi One', sans-serif;
 }
 
 #penguins {
@@ -17,35 +17,116 @@ body {
     top: 50%; 
     left: 0; 
     transform: translate(0%, -50%);
-    margin-left: 15%;
+    margin-left: 12%;
 }
 
 #title {
     font-size: 36px;
-    color: #333;
+    color: #ffffff;
     position: absolute;
-    top: 45%; 
-    right: 0; 
+    top: 43%;
+    right: 0;
     transform: translate(0%, -50%);
     margin-right: 10%;
+    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8), 
+        0 0 15px rgba(255, 255, 255, 0.8), 
+        0 0 25px rgba(255, 255, 255, 0.8), 
+        0 0 10px black;
 }
 
-#Button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4285f4;
-    color: #fff;
-    text-decoration: none;
-    border: none;
+.button {
+    border: 1px solid rgb(255, 255, 255);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transform: skewX(-10deg);
+    zoom: 1.5;
+    height: 50px;
+    width: 200px;
+    border-radius: 20px 5px 20px 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font: 15px sans-serif;
+    font-weight: 300;
+    text-shadow: 0 0 20px #fff;
+    text-transform: uppercase;
+    animation: breath2 2s 0.5s infinite alternate;
+    transition: all 0.2s ease;
     cursor: pointer;
     position: absolute;
-    top: 55%; 
+    top: 63%; 
     right: 0; 
     transform: translate(0%, -50%);
-    margin-right: 10%;
-}
+    margin-right: 18%;
+    font-family: 'Madimi One', sans-serif;
+    font-size: 110%;
+    color: #ffffff;
+  }
+  
+  .button:before {
+    content: "";
+    display: block;
+    width: calc(100% - 22px);
+    height: calc(50px - 8px);
+    animation: breath 2s infinite alternate;
+    left: 10px;
+    top: 3px;
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 15px 3px 15px 3px;
+  }
+  
+  .button.ice:before {
+    box-shadow: inset 0 0 30px 0 #a8ecff;
+  }
+
+  .button:hover.ice {
+    box-shadow: 0 0 70px rgba(48, 138, 255, 0.75),
+      0 5px 20px rgba(48, 138, 255, 0.75), inset 0 1px #a8ecff,
+      inset 0 -1px #a8ecff;
+  }
+  
+  .button:hover.ice:before {
+    box-shadow: inset 0 0 50px 0 #a8ecff;
+  }
+  
+  .button + .button {
+    animation-delay: 0.3s;
+  }
+  
+  @media (max-width: 767px) {
+    body {
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .button + .button {
+      margin-top: 30px;
+    }
+  }
+  @keyframes breath {
+    0% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0.95);
+    }
+  }
+  
+  @keyframes breath2 {
+    0% {
+      transform: skewX(-10deg) scaleX(1);
+    }
+    100% {
+      transform: skewX(-10deg) scaleX(0.95);
+    }
+  }
 
 * {
     box-sizing: border-box;
