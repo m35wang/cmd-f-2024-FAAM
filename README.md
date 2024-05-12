@@ -1,6 +1,6 @@
 **Inspiration**
 
-As busy university students who sit for hours at a time, our team noticed that we all suffered from lower back pain. Often, incorporating some quick, simple exercises into a daily routine can be the difference between feeling horrible and feeling great. This fact, along with our interest in fitness and wellbeing inspired us to create a desktop mini-game that reminds you to take intentional breaks from the screen to keep active.
+As busy university students who sit for hours at a time, our team noticed that we all suffered from lower back pain. Often, incorporating some quick, simple exercises into a daily routine can be the difference between feeling horrible and feeling great. This fact, along with our interest in fitness and well-being inspired us to create a desktop mini-game that reminds you to take intentional breaks from the screen to keep active.
 
 **What it does**
 
@@ -12,7 +12,7 @@ Penguin Warriors uses the machine learning libraries TensorFlow and MoveNet to t
 
 **Challenges we ran into**
 
-Initially, we wanted to work on a different idea that used a Google Maps API; however, we struggled to make progress with this topic. We realized we had to shift gears in order to create a tangible product. This led to us working with TensorFlow and MoveNet. However, these materials were still new to us so the learning curve was steep. We had trouble downloading and implementing these materials and came across many bugs. We solved these problems by asking mentors, relatives and following YouTube videos.
+Initially, we wanted to work on a different idea making a chrome extension, however, we struggled to make progress with this topic due to security limitations. We realized we had to shift gears in order to create a tangible product. This led to us working with TensorFlow and MoveNet. However, these materials were still new to us so the learning curve was steep. We had trouble downloading and implementing these materials and came across many bugs. We solved these problems by asking mentors, relatives and following YouTube videos.
 
 **Accomplishments that we're proud of**
 
